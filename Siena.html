@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Siena</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <a href="home.html#home" class="nav-home">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" alt="Home">
+        </a>
+        <div class="nav-links">
+            <a href="home.html#opis" class="nav-link">Opis</a>
+            <div class="dropdown">
+                <a href="home.html#trasy" class="nav-link nav-link-trasy">Trasy</a>
+                <div class="dropdown-content">
+                    <a href="Florence.html">Florence</a>
+                    <a href="Siena.html">Siena</a>
+                    <a href="Pisa.html">Pisa</a>
+                    <a href="Livorno.html">Livorno</a>
+                    <a href="Arezzo.html">Arezzo</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content-section">
+        <h1>Odkryj Sienę</h1>
+
+        <div class="description-columns">
+            <div class="description-column">
+                <h2>Gotycki Majestat</h2>
+                <p>Siena to miasto, które zatrzymało się w czasie średniowiecza. Wewnątrz <strong>Katedry w Sienie
+                        (Duomo)</strong> czeka na Was jeden z najpiękniejszych skarbów sztuki – unikalna posadzka
+                    mozaikowa, którą podziwiać można tylko przez kilka tygodni w roku. Wnętrze świątyni, łączące czarne
+                    i białe pasy marmuru, tworzy niesamowity efekt wizualny, który nie ma odpowiednika w żadnym innym
+                    kościele na świecie.</p>
+                <p>Wewnątrz katedry znajduje się również <strong>Libreria Piccolomini</strong>, której ściany są w
+                    całości pokryte żywymi, kolorowymi freskami Pinturicchia. Te dzieła sztuki, zachowane w idealnym
+                    stanie, wyglądają jakby zostały namalowane wczoraj, przenosząc odwiedzających prosto w centrum
+                    renesansowych opowieści.</p>
+            </div>
+            <div class="description-column">
+                <h2      >Serce Miasta</h2>
+                <p>Symbol Sieny, <strong>Palazzo Pubblico</strong>, to miejsce, gdzie historia polityczna miesza się ze
+                    sztuką. Wewnątrz legendarnej Sala dei Nove możecie zobaczyć freski Ambrogia Lorenzettiego
+                    przedstawiające „Alegorię Dobrych i Złych Rządów”. To niesamowity wgląd w to, jak mieszkańcy XIV
+                    wieku postrzegali sprawiedliwość i ład społeczny wewnątrz murów swojego miasta.</p>
+                <p>Dla tych, którzy nie boją się wysiłku, wejście na <strong>Torre del Mangia</strong> jest obowiązkowe.
+                    Wewnątrz wąskich schodów prowadzących na szczyt można poczuć ciężar historii, a widok, który
+                    rozpościera się z góry na muszlowaty kształt Piazza del Campo, pozwala w pełni docenić unikalną
+                    urbanistykę Sieny. To serce miasta, które bije mocniej wewnątrz każdego zaułka.</p>
+            </div>
+        </div>
+
+
+        <div class="map-wrapper">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m62!1m12!1m3!1d24189.178133235095!2d11.317996385790009!3d43.32050858598931!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m47!3e2!4m5!1s0x132a2cbbb4a6a3c3%3A0x51fd19855c7fde45!2sSiena%20Cathedral!3m2!1d43.317701899999996!2d11.3289071!4m3!3m2!1d43.3203271!2d11.3264746!4m5!1s0x132a2cb9f1439513%3A0x46ab39303192025a!2sPiazza%20del%20Campo!3m2!1d43.318420499999995!2d11.331691099999999!4m5!1s0x132a2cb0ac5d367d%3A0x77121015bc6d1da7!2sPalazzo%20Pubblico!3m2!1d43.3179909!2d11.332025699999999!4m5!1s0x132a2cb7454239f9%3A0x1ba4bf173d3fd7e8!2sPalazzo%20Piccolomini!3m2!1d43.3189667!2d11.3330174!4m5!1s0x132a2cb9371df811%3A0x97dfb1b6ee351b1e!2sBasilica%20Cateriniana%20San%20Domenico!3m2!1d43.320129699999995!2d11.326450699999999!4m5!1s0x132a2d0048f230c7%3A0x3fa08ca5c478d67b!2sFontebranda!3m2!1d43.319316099999995!2d11.3276915!4m5!1s0x132a2cbf724701d5%3A0xb097ca716ddd3f3d!2sFortezza%20Medicea!3m2!1d43.322661!2d11.3238335!5e1!3m2!1sen!2spl!4v1768804295647!5m2!1sen!2spl"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="gallery-container">
+            <button class="gallery-btn prev" id="prevBtn">&lt;</button>
+            <div class="gallery-scroll" id="photoGallery">
+                <div class="gallery-item"><img src="img/Siena/S1.jpg" alt="Siena 1"></div>
+                <div class="gallery-item"><img src="img/Siena/S2.JPG" alt="Siena 2"></div>
+                <div class="gallery-item"><img src="img/Siena/S3.JPG" alt="Siena 3"></div>
+                <div class="gallery-item"><img src="img/Siena/S4.JPG" alt="Siena 4"></div>
+            </div>
+            <button class="gallery-btn next" id="nextBtn">&gt;</button>
+        </div>
+
+        <p class="distance-info">Czas przejścia: 54 min (3.5 km)</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+
+
+</html>
