@@ -5,13 +5,12 @@ let treeRight1 = document.querySelector('.tree-right1');
 
 let titles = document.querySelectorAll('.main-title-container');
 
-// Navigation
 const navBar = document.querySelector('.nav-links');
 const sections = document.querySelectorAll('section, header#home');
 const navLinks = document.querySelectorAll('.nav-link');
 const navToggle = document.createElement('div');
 
-// Mobile Menu Toggle
+// mobile menu 
 document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('.nav-bar');
     if (nav && !document.querySelector('.nav-toggle')) {
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
             toggle.classList.toggle('open');
         });
 
-        // Close menu when clicking links
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navBar.classList.remove('mobile-active');
@@ -35,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Active Link Highlighting
 window.addEventListener('scroll', () => {
     let value = window.scrollY;
 
@@ -49,7 +46,6 @@ window.addEventListener('scroll', () => {
             title.style.transform = `translateY(${value * 0.5}px)`;
         });
     }
-
     // Highlighting for landing page sections
     if (sections.length > 0) {
         let current = '';
@@ -60,7 +56,6 @@ window.addEventListener('scroll', () => {
                 current = section.getAttribute('id');
             }
         });
-
         navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href').includes(current) && current !== '') {
@@ -74,34 +69,30 @@ window.addEventListener('scroll', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname;
     const page = path.split("/").pop();
-
-    // Check main nav links
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
-        if (href === page || (page === '' && href === 'home.html')) {
+        if (href === page || (page === '' && href === 'index.html')) {
             link.classList.add('active');
         }
     });
-
-    // Check dropdown links
     const dropdownLinks = document.querySelectorAll('.dropdown-content a');
     dropdownLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === page) {
             link.classList.add('active');
-            // If we match a city, highlight the parent 'Trasy'
+            // if we match a city, highlight the parent "Trasy"
             const trasyLink = document.querySelector('.nav-link-trasy');
             if (trasyLink) trasyLink.classList.add('active');
         }
     });
 
-    // Special case for Opis/Trasy anchors on home page
-    if (page === 'home.html' || page === 'index.html' || page === '') {
-        // Scroll listener will handle this via the scroll event
+    // for Opis/Trasy anchors on home page
+    if (page === 'index.html' || page === 'index.html' || page === '') {
+        // scroll listener will handle via scroll event
     }
 });
 
-// Smooth Scrolling
+// smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const targetId = this.getAttribute('href');
@@ -116,7 +107,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 
-// Tooltip Logic & Labels
 const provinces = document.querySelectorAll('.province');
 const tooltip = document.getElementById('tooltip');
 const svgMap = document.getElementById('tuscany-map');
@@ -126,8 +116,7 @@ if (provinces.length > 0) {
         // Tooltip
         if (tooltip) {
             province.addEventListener('mousemove', (e) => {
-                const name = province.getAttribute('data-name');
-                tooltip.innerText = name;
+                tooltip.innerText = province.getAttribute('data-name');
                 tooltip.style.opacity = '1';
                 // Position tooltip near mouse cursor
                 tooltip.style.left = e.pageX + 15 + 'px'; // +15 for offset
@@ -141,27 +130,20 @@ if (provinces.length > 0) {
 
         // Active Regions Logic (Labels & Links)
         if (province.classList.contains('active-region')) {
-            // 1. Navigation
             province.addEventListener('click', () => {
                 const url = province.getAttribute('data-url');
                 if (url) {
                     window.location.href = url;
                 }
             });
-
-            // 2. Add Label Interaction (Show on Hover)
             province.addEventListener('mouseenter', () => {
                 const label = document.getElementById(`label-${province.id}`);
                 if (label) label.style.opacity = '1';
             });
-
             province.addEventListener('mouseleave', () => {
                 const label = document.getElementById(`label-${province.id}`);
                 if (label) label.style.opacity = '0';
             });
-
-            // 3. Add Label Element
-            // Check if label already exists to avoid duplicates if script re-runs
             const provinceId = province.id;
             if (!document.getElementById(`label-${provinceId}`)) {
                 try {
@@ -174,9 +156,7 @@ if (provinces.length > 0) {
                     text.setAttribute("y", centerY);
                     text.setAttribute("id", `label-${provinceId}`);
                     text.setAttribute("class", "province-label");
-                    // Use data-name or ID for the label text
-                    text.textContent = province.getAttribute('data-name').split(' ')[0]; // Take first word if "Firenze (Florence)"
-
+                    text.textContent = province.getAttribute('data-name').split(' ')[0];
                     svgMap.appendChild(text);
                 } catch (e) {
                     console.error("Could not calculate BBox for", provinceId, e);
@@ -186,7 +166,7 @@ if (provinces.length > 0) {
     });
 }
 
-// Video Slider Logic
+// video Slider Logic
 document.addEventListener('DOMContentLoaded', () => {
     let items = document.querySelectorAll('.slider .list .item');
     let next = document.getElementById('next');
@@ -195,10 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let itemActive = 0;
 
     if (items.length > 0 && next && prev) {
-        // Init first item
         items[itemActive].classList.add('active');
-
-        // Next button click
         next.onclick = function () {
             itemActive = itemActive + 1;
             if (itemActive >= countItem) {
@@ -206,8 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             showSlider();
         }
-
-        // Prev button click
         prev.onclick = function () {
             itemActive = itemActive - 1;
             if (itemActive < 0) {
@@ -216,20 +191,13 @@ document.addEventListener('DOMContentLoaded', () => {
             showSlider();
         }
 
-        // Auto run slider
         let refreshInterval = setInterval(() => {
             next.click();
         }, 5000);
-
         function showSlider() {
-            // Remove item active old
             let itemActiveOld = document.querySelector('.slider .list .item.active');
             if (itemActiveOld) itemActiveOld.classList.remove('active');
-
-            // Active new item
             items[itemActive].classList.add('active');
-
-            // Reset auto run slider
             clearInterval(refreshInterval);
             refreshInterval = setInterval(() => {
                 next.click();
@@ -238,9 +206,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Lightbox Implementation
+// Lightbox
 document.addEventListener('DOMContentLoaded', () => {
-    // Create element if it doesn't exist
     if (!document.getElementById('lightbox')) {
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
@@ -254,7 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeBtn = document.getElementById('lightboxClose');
         const lightboxImg = document.getElementById('lightboxImg');
 
-        // Close logic
         const closeLightbox = () => {
             lightbox.classList.remove('active');
             setTimeout(() => {
@@ -269,8 +235,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === lightbox) closeLightbox();
         });
 
-        // Open logic for all gallery images
-        const galleryImgs = document.querySelectorAll('.gallery-item img');
+        // open logic for all gallery images
+        const galleryImgs = document.querySelectorAll('.gallery-scroll .gallery-item img');
         if (galleryImgs.length > 0) {
             galleryImgs.forEach(img => {
                 img.addEventListener('click', () => {
@@ -279,10 +245,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         }
-
-        // Escape key to close
+        // esscape key to close
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeLightbox();
+        });
+    }
+});
+
+// gallery scroll
+document.addEventListener('DOMContentLoaded', () => {
+    const photoGallery = document.getElementById('photoGallery');
+    const galNext = document.querySelector('.gallery-btn.next');
+    const galPrev = document.querySelector('.gallery-btn.prev');
+
+    if (photoGallery && galNext && galPrev) {
+        galNext.addEventListener('click', () => {
+            photoGallery.scrollBy({ left: 415, behavior: 'smooth' });
+        });
+
+        galPrev.addEventListener('click', () => {
+            photoGallery.scrollBy({ left: -415, behavior: 'smooth' });
         });
     }
 });
